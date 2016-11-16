@@ -52,6 +52,6 @@ bot.dialog('/', [
         guestpass_fmt += '\n\nGuest Company: ' + session.dialogData.company.entity;
         guestpass_fmt += '\n\nTower: ' + session.dialogData.tower.entity + ', Level: ' + session.dialogData.level;
         guestpass_fmt += '\n\nVisitation date: ' + session.dialogData.time.entity;
-        session.send('Thank you. The guest pass currently looks like: ');    
+        session.send('Thank you. The guest pass currently looks like: ' + guestpass_fmt);    
     }
 ])
