@@ -14,6 +14,43 @@ var connector = new builder.ChatConnector({
 var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
-bot.dialog('/', function(session) {
-    session.send('Hello, would you like to create a guest pass?');
-});
+// Root message
+bot.dialog('/', [
+    function (session) {
+        builder.Prompts.text(session, 'Hey! For us to create the guest pass we need to ask you a few questions, firstly who will be their host?');
+    },
+    function (session, results) {
+        session.guestPassData.host = results.response;
+        builder.Prompts.text(session, 'Great! What is your phone number?');
+    },
+    function (session, results) {
+        session.guestPassData.phone_number = results.response;
+        builder.Prompts.text(session, 'What is the guests name?');
+    },
+    function (session, results) {
+        session.guestPassData.guest = results.response;
+        builder.Prompts.choice(session, 'WHat company does the guest work for', ["I'd rather not say"]);
+    },
+    function (session, results) {
+        session.guestPassData.company = results.response;
+        builder.Prompts.choice(session, 'What tower is this for?', ['Tower Two', 'Tower Three']);
+    },
+    function(session, results) {
+        session.guestPassData.tower = results.response;
+        builder.Prompts.text(session, 'What floor are they visiting?');
+    },
+    function (session, results) {
+        session.guestPassData.level = results.response;
+        builder.Prompts.time(session, 'When is this guest pass for?');
+    },
+    function (session, results) {
+        session.guestPassData.time = results.response;
+        var guestpass_fmt = '';
+        guestpass_fmt += 'Host Name: ' + session.guestPassData.host;
+        guestpass_fmt += 'Guest Name: ' + session.guestPassData.guest;
+        guestpass_fmt += 'Guest Company: ' + session.guestPassData.company;
+        guestpass_fmt += 'Tower: ' + session.guestPassData.tower + ', Level: ' + session.guestPassData.level;
+        guestpass_fmt += 'Visitation date: ' + session.guestPassData.time;
+        session.send('Thank you. The guest pass currently looks like: ' + guestpass_fmt);    
+    }
+])
