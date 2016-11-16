@@ -1,0 +1,15 @@
+{
+  "name": "ms-checkin",
+  "version": "1.0.0",
+  "description": "Barangaroo ITS Checkin MSBF experiment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "botbuilder": "^3.4.4",
+    "restify": "^4.3.0"
+  }
+}
