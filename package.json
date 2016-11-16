@@ -2,7 +2,10 @@
   "name": "ms-checkin",
   "version": "1.0.0",
   "description": "Barangaroo ITS Checkin MSBF experiment",
-  "main": "node app.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "author": "Danruto",
   "license": "ISC",
   "dependencies": {
