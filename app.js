@@ -20,37 +20,37 @@ bot.dialog('/', [
         builder.Prompts.text(session, 'Hey! For us to create the guest pass we need to ask you a few questions, firstly who will be their host?');
     },
     function (session, results) {
-        session.guestPassData.host = results.response;
+        session.dialogData.host = results.response;
         builder.Prompts.text(session, 'Great! What is your phone number?');
     },
     function (session, results) {
-        session.guestPassData.phone_number = results.response;
+        session.dialogData.phone_number = results.response;
         builder.Prompts.text(session, 'What is the guests name?');
     },
     function (session, results) {
-        session.guestPassData.guest = results.response;
+        session.dialogData.guest = results.response;
         builder.Prompts.choice(session, 'WHat company does the guest work for', ["I'd rather not say"]);
     },
     function (session, results) {
-        session.guestPassData.company = results.response;
+        session.dialogData.company = results.response;
         builder.Prompts.choice(session, 'What tower is this for?', ['Tower Two', 'Tower Three']);
     },
     function(session, results) {
-        session.guestPassData.tower = results.response;
+        session.dialogData.tower = results.response;
         builder.Prompts.text(session, 'What floor are they visiting?');
     },
     function (session, results) {
-        session.guestPassData.level = results.response;
+        session.dialogData.level = results.response;
         builder.Prompts.time(session, 'When is this guest pass for?');
     },
     function (session, results) {
-        session.guestPassData.time = results.response;
+        session.dialogData.time = results.response;
         var guestpass_fmt = '';
-        guestpass_fmt += 'Host Name: ' + session.guestPassData.host;
-        guestpass_fmt += 'Guest Name: ' + session.guestPassData.guest;
-        guestpass_fmt += 'Guest Company: ' + session.guestPassData.company;
-        guestpass_fmt += 'Tower: ' + session.guestPassData.tower + ', Level: ' + session.guestPassData.level;
-        guestpass_fmt += 'Visitation date: ' + session.guestPassData.time;
+        guestpass_fmt += 'Host Name: ' + session.dialogData.host;
+        guestpass_fmt += 'Guest Name: ' + session.dialogData.guest;
+        guestpass_fmt += 'Guest Company: ' + session.dialogData.company;
+        guestpass_fmt += 'Tower: ' + session.dialogData.tower + ', Level: ' + session.dialogData.level;
+        guestpass_fmt += 'Visitation date: ' + session.dialogData.time;
         session.send('Thank you. The guest pass currently looks like: ' + guestpass_fmt);    
     }
 ])
