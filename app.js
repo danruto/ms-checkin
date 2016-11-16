@@ -47,7 +47,7 @@ bot.dialog('/', [
         console.log(JSON.stringify(session.dialogData));
         session.dialogData.time = results.response;
         var guestpass_fmt = '';
-        guestpass_fmt += 'Host Name: ' + session.dialogData.host;
+        guestpass_fmt += '\n\nHost Name: ' + session.dialogData.host;
         guestpass_fmt += '\n\nGuest Name: ' + session.dialogData.guest;
         guestpass_fmt += '\n\nGuest Company: ' + session.dialogData.company.entity;
         guestpass_fmt += '\n\nTower: ' + session.dialogData.tower.entity + ', Level: ' + session.dialogData.level;
