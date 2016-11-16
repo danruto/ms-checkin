@@ -48,10 +48,10 @@ bot.dialog('/', [
         session.dialogData.time = results.response;
         var guestpass_fmt = '';
         guestpass_fmt += 'Host Name: ' + session.dialogData.host;
-        guestpass_fmt += '\nGuest Name: ' + session.dialogData.guest;
-        guestpass_fmt += '\nGuest Company: ' + session.dialogData.company;
-        guestpass_fmt += '\nTower: ' + session.dialogData.tower + ', Level: ' + session.dialogData.level;
-        guestpass_fmt += '\nVisitation date: ' + session.dialogData.time;
-        session.send('Thank you. The guest pass currently looks like: ' + guestpass_fmt);    
+        guestpass_fmt += '\n\nGuest Name: ' + session.dialogData.guest;
+        guestpass_fmt += '\n\nGuest Company: ' + session.dialogData.company.entity;
+        guestpass_fmt += '\n\nTower: ' + session.dialogData.tower.entity + ', Level: ' + session.dialogData.level;
+        guestpass_fmt += '\n\nVisitation date: ' + session.dialogData.time.entity;
+        session.send('Thank you. The guest pass currently looks like: ');    
     }
 ])
