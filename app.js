@@ -44,13 +44,14 @@ bot.dialog('/', [
         builder.Prompts.time(session, 'When is this guest pass for?');
     },
     function (session, results) {
+        console.log(JSON.stringify(session.dialogData));
         session.dialogData.time = results.response;
         var guestpass_fmt = '';
         guestpass_fmt += 'Host Name: ' + session.dialogData.host;
-        guestpass_fmt += 'Guest Name: ' + session.dialogData.guest;
-        guestpass_fmt += 'Guest Company: ' + session.dialogData.company;
-        guestpass_fmt += 'Tower: ' + session.dialogData.tower + ', Level: ' + session.dialogData.level;
-        guestpass_fmt += 'Visitation date: ' + session.dialogData.time;
+        guestpass_fmt += '\nGuest Name: ' + session.dialogData.guest;
+        guestpass_fmt += '\nGuest Company: ' + session.dialogData.company;
+        guestpass_fmt += '\nTower: ' + session.dialogData.tower + ', Level: ' + session.dialogData.level;
+        guestpass_fmt += '\nVisitation date: ' + session.dialogData.time;
         session.send('Thank you. The guest pass currently looks like: ' + guestpass_fmt);    
     }
 ])
